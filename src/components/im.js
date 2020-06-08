@@ -12,19 +12,19 @@ export default {
     data() {
         return {
             im_list: [],
-            uid: 2,
-            receiver: 2,
+            uid: null,
+            receiver: null,
             account: 'airson',
             password: '123123',
-            token: '',
-            text_content: 'hello'
+            token: null,
+            text_content: null
         }
     },
     props: {
         msg: String
     },
     mounted: function () {
-        this.initWebSocket();
+        //this.initWebSocket();
     },
     beforeDestroy: function () {
         // 页面离开时断开连接,清除定时器
@@ -32,38 +32,50 @@ export default {
     },
     methods: {
         initWebSocket() {
-            //this.connection();
+            let that = this;
+            that.socket && that.socket.close();
+            that.connection();
         },
         disconnect() {
             let that = this;
-            that.socket.close();
+            that.socket && that.socket.close();
         },
         connection() {
             let that = this;
             //let token = new Date().getTime();
             //that.uid = token;
-            let url = 'ws://localhost:9990/ws/im/' + that.token;
+            if (!that.uid) {
+                console.log("请设置你自己的ID，随便填写一个1-1000的整数");
+                return;
+            }
+            that.token = that.uid;
+            //let url = 'ws://localhost:9990/ws/im/' + that.token;
+            let url = 'ws://172.81.216.81:8081/ws/ws/im/' + that.token;
             that.socket = new WebSocket(url);
             //连接打开事件
             that.socket.onopen = function () {
-                console.log("ws onopen");
+                //console.clear();
+                console.info("ws onopen");
                 //that.socket.send("消息发送测试(From Client)");
             };
             //收到消息事件
             that.socket.onmessage = function (msg) {
-                console.log(msg.data);
+                //console.log(msg.data);
                 that.receive_msg(msg);
             };
             //连接关闭事件
             that.socket.onclose = function () {
-                console.log("ws onclose");
+                //console.clear();
+                console.warn("ws onclose");
             };
             //发生了错误事件
             that.socket.onerror = function (ev) {
-                console.log("ws onerror:", ev);
-                alert("Socket发生了错误");
+                //console.clear();
+                console.warn("ws onerror:", ev);
+                //alert("Socket发生了错误");
             }
             window.unload = function () {
+                //console.clear();
                 that.disconnect();
             }
         },
@@ -88,7 +100,12 @@ export default {
         },
         send_im_msg() {
             let that = this;
+            if (!that.receiver) {
+                console.log("请设置对方的ID");
+                return;
+            }
             that.append_im_msg();
+            that.text_content = '';
         },
         append_im_msg() {
             let that = this;
@@ -100,23 +117,27 @@ export default {
                 'receiver': that.receiver,
                 'sender': that.uid
             }
-            let ary_len = that.im_list.push(data);
-            that.remote_send_msg(data, ary_len);
+            //let ary_len = that.im_list.push(data);
+            //that.remote_send_msg(data, ary_len);
+            that.remote_send_msg(data);
+            console.log('send:', content);
         },
         receive_msg(msg) {
-            let that = this;
-            console.log("receive_msg:", msg.data);
-            that.im_list.push(JSON.parse(msg.data));
+            //let that = this;
+            //console.clear();
+            console.log("receive:", JSON.parse(msg.data).content);
+            //that.im_list.push(JSON.parse(msg.data));
         },
         clear() {
             let that = this;
             that.im_list = [];
+            console.clear();
         },
-        remote_send_msg(data, ary_len) {
+        remote_send_msg(data) { //, ary_len
             let that = this;
             try {
-                let index = ary_len - 1;
-                that.im_list[index].state = 11;
+                /*let index = ary_len - 1;
+                that.im_list[index].state = 11;*/
                 let msg = JSON.stringify(data);
                 //that.stompClient.send("/app/chat", {}, msg);
                 that.socket.send(msg);
