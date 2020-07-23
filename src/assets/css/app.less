@@ -1,0 +1,302 @@
+@import '../../my-theme/default/default_blue.less';
+/*-------variable--------*/
+@win-bg-color: #9EA2A6;
+@win-head-color: #1F2F38;
+@win-font-color: #ffffff;
+@icon-color: #000;
+
+// XXX theme_blue start
+@win-bg-color: #0F4185;
+@win-head-color: #001959;
+@win-font-color: #ffffff;
+@icon-color: #fff;
+// XXX theme_blue end
+/*-------variable--------*/
+.left-pane.ivu-split-pane {
+  background-color: #011D63;
+}
+
+.sdk-tac {
+  text-align: center;
+}
+
+.sdk-fr {
+  float: right;
+}
+
+.sdk-fl {
+  float: left;
+}
+
+.sdk-cp {
+  cursor: pointer;
+}
+
+.sdk-modal-vert-cent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .ivu-modal {
+    top: 0;
+    left: 300px;
+  }
+}
+
+/*---------------*/
+
+.icon-btn {
+  color: @icon-color !important;;
+}
+
+#sdk_webapp {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 20px;
+}
+
+.ivu-avatar-largest {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 40px !important;
+}
+
+.ivu-icon-ios-close:hover {
+  color: #2d8cf0 !important;
+}
+
+.sdk-user-modal {
+
+  .ivu-modal-header {
+    background-color: @win-head-color;
+    color: @win-font-color;
+    border-bottom: none;
+  }
+
+  .ivu-modal-header-inner {
+    color: @win-font-color;
+  }
+
+  .ivu-modal-body {
+    padding: 0px;
+  }
+
+  .ivu-modal-content {
+    background-color: @win-bg-color;
+    color: @win-font-color;
+    border: 5px solid @win-head-color;
+    box-shadow: #0a38c9 0px 0px 8px;
+  }
+
+  .ivu-modal-close i {
+    color: @win-font-color;
+  }
+
+  .ivu-split-trigger-vertical {
+    background: @win-head-color;
+  }
+
+  .ivu-split-trigger {
+    border: 1px solid @win-head-color;
+  }
+
+}
+
+.sdk-voice-modal {
+
+  @win-bg-color: #1E2E37;
+  @win-head-color: #1E2E37;
+  @win-foot-color: #595957;
+  @win-font-color: #ffffff;
+
+  // XXX theme_blue start
+  @win-bg-color: #0F4185;
+  @win-head-color: #001959;
+  @win-foot-color: #001959;
+  @win-font-color: #ffffff;
+  // XXX theme_blue end
+
+  .ivu-modal-header {
+    background-color: @win-head-color;
+    color: @win-font-color;
+    border-bottom: none;
+  }
+
+  .ivu-modal-header-inner {
+    color: @win-font-color;
+  }
+
+  .ivu-modal-body {
+    padding: 0px;
+  }
+
+  .ivu-modal-content {
+    background-color: @win-bg-color;
+    color: @win-font-color;
+    border: 2px solid @win-foot-color;
+    border-radius: 4px;
+  }
+
+  .ivu-modal-close i {
+    color: @win-font-color;
+  }
+
+  .ivu-modal-footer {
+    background-color: @win-foot-color;
+    border-top: 1px solid @win-foot-color;
+    padding: 5px 15px;
+  }
+}
+
+.sdk-voice-call-modal {
+  @win-body-color: #0E1A23;
+  // XXX theme_blue start
+  @win-body-color: #011D63;
+  // XXX theme_blue end
+
+  .ivu-modal-body {
+    background-color: @win-body-color;
+  }
+
+  .ivu-modal-footer {
+    padding: 8px 15px;
+  }
+
+}
+
+.sdk-video-modal {
+  @win-body-color: #0E1A23;
+
+  .ivu-modal-header {
+    padding: 6px 4px;
+  }
+
+  .ivu-modal-close {
+    top: 0px;
+  }
+
+  .ivu-modal-body {
+    background-color: @win-body-color;
+  }
+
+  .ivu-modal-footer {
+    padding: 2px 2px;
+  }
+
+}
+
+.sdk-group-create-modal {
+  .ivu-modal-header {
+    padding: 2px 4px;
+  }
+
+  .ivu-modal-close {
+    top: -4px;
+    right: 2px;
+  }
+
+  .sdk-search-ipt input {
+    background-color: #585756;
+    border-color: #9E9E9E;
+    //border: none !important;
+    //border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 1.1em;
+  }
+
+  .sdk-search-ipt input:focus {
+    border-color: #585756;
+  }
+
+  .ivu-modal-footer {
+    background-color: #515456;
+    border-top: 1px solid #515456;
+  }
+
+}
+
+.sdk-user-list-modal {
+
+  .ivu-modal-content {
+    top: 70px;
+    right: 450px;
+  }
+
+  .ivu-modal-header {
+    padding: 2px 4px;
+  }
+
+  .ivu-modal-close {
+    top: -4px;
+    right: 2px;
+  }
+
+  .ivu-tabs-bar {
+    .ivu-tabs-tab {
+      color: #111;
+      background-color: #c9caca;
+    }
+
+    .ivu-tabs-nav {
+      .ivu-tabs-ink-bar {
+        background-color: #585756;
+      }
+
+      .ivu-tabs-tab-active {
+        color: #fff;
+        background-color: #585756;
+      }
+    }
+  }
+
+  .sdk-search-ipt input {
+    background-color: #585756;
+    border-color: #585756;
+    border: none !important;
+    //border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 1.1em;
+  }
+
+  .sdk-search-ipt input:focus {
+    border-color: #585756;
+  }
+
+  .ivu-modal-footer {
+    background-color: #515456;
+    border-top: 1px solid #515456;
+  }
+}
+
+//全屏窗口时要重置拖动的偏移量，不然会错位。
+.sdk-fullscreen-toggle-modal {
+  .ivu-modal-fullscreen {
+    .ivu-modal-content-drag {
+      width: 100% !important;
+      left: 0px !important;
+      top: 0px !important;
+    }
+  }
+}
+
+.ivu-modal-fullscreen .ivu-modal-body {
+  bottom: 38px !important;
+}
+
+.sdk-im-image-modal {
+  .ivu-modal-header {
+    padding: 3px;
+  }
+
+  .ivu-modal-close {
+    top: 0px;
+    right: 0px;
+  }
+
+  .ivu-modal-content {
+    border: none;
+  }
+}
