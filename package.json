@@ -16,7 +16,7 @@
     "stompjs": "^2.3.3",
     "vue": "^2.6.10",
     "vuex": "^3.5.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.27.0"
   },
   "devDependencies": {
